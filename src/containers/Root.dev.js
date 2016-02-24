@@ -3,9 +3,10 @@ import { Provider } from 'react-redux';
 import App from './App';
 import DevTools from './DevTools';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { IndexRoute, Router, Route, browserHistory } from 'react-router';
+import { IndexRoute, Router, Route, useRouterHistory } from 'react-router';
 import Project from '../components/Project';
 import Home from '../components/Home';
+import { createHashHistory } from 'history';
 
 /**
  * Component is exported for conditional usage in Root.js
@@ -14,8 +15,11 @@ module.exports = class Root extends Component {
   render() {
     const { store } = this.props;
 
+    // Disable query keys
+    const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
+
     // Create an enhanced history that syncs navigation events with the store
-    const history = syncHistoryWithStore(browserHistory, store);
+    const history = syncHistoryWithStore(appHistory, store);
 
     const wrapComponent = function(Component, props) {
       return React.createClass({
@@ -43,7 +47,7 @@ module.exports = class Root extends Component {
 
 
           {/* Being the dev version of our Root component, we include DevTools below */}
-          <DevTools />
+          {/*<DevTools />*/}
         </div>
       </Provider>
     );

@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import Mobile from './projectComponents/Mobile.js';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-
+import Slider from 'react-slick';
+import { hashHistory } from 'react-router';
 
 export default class Project extends Component {
   constructor(props, context) {
@@ -10,59 +11,77 @@ export default class Project extends Component {
   }
 
   render() {
-    const { projects } = this.props;
+    const { projects, history } = this.props;
 
-    let project;
-    let prevProject;
-    let nextProject;
+    let currentIndex = 0;
+    let projectsJSX = projects.map((project, index) => {
 
-    projects.forEach((item, idx, items) => {
-      if (item.url === this.props.params.name) {
-        project = item;
-        const prevIdx = idx - 1 < 0 ? items.length - 1 : idx - 1;
-        const nextIdx = (idx + 1) % items.length;
-        prevProject = items[prevIdx];
-        nextProject = items[nextIdx];
+      if (project.url === this.props.params.name) {
+        currentIndex = index;
       }
-    });
 
-    const projectJson = JSON.stringify(project);
+      return (
+        <div key={index} className="projectWrapper">
+          <div className="project-container">
 
-    return (
-      <div className="projectWrapper">
-        <Link to={`/projects/${prevProject.url}`}>&lt; Previous</Link>
-        <Link style={{float: "right"}} to={`/projects/${nextProject.url}`}>Next &gt;</Link>
-        <div className="project-container">
+            <div className="image-container" >
+              <div className="screenshot-container" style={{backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundImage: `url(${project.desktop_image})`}}>
+              </div>
 
-          <div className="image-container" >
-            <div className="screenshot-container" style={{backgroundImage: `url(${project.desktop_image})`}}>
+              <Mobile image={project.mobile_image}/>
+
             </div>
 
-            <Mobile image={project.mobile_image}/>
+            <div className="project-info">
+              
+               <div className="project-title"><a href={project.project_url}><h2>{project.title}</h2></a></div>
+      
+              <h4>Background</h4>
+              <div className="project-info-text">{project.background}</div>
+              <h4>Role</h4>
+              <div className="project-info-text">{project.role}</div>
+              <h4>Tech Stack</h4>
+              <div className="project-info-text">{project.tech_stack}</div>
+
+            </div>
+
+            <div className="github-info">
+              <div> <img src="../data/logos/github-logo.png"/> {project.github_url} </div>
+            </div>
 
           </div>
-
-          <div className="project-info">
-            
-            <a href={project.project_url}><h2>{project.title}</h2></a>
-            <div>{project.date}</div>
-            <h4>Background</h4>
-            <div>{project.background}</div>
-            <h4>Role</h4>
-            <div>{project.role}</div>
-            <h4>Tech Stack</h4>
-            <div>{project.tech_stack}</div>
-
-          </div>
-
-          <div className="github-info">
-            <div> <img src="../data/logos/github-logo.png"/> {project.github_url} </div>
-          </div>
-
         </div>
-      </div>
-    );
+      );
+    });
+
+    const SimpleSlider = React.createClass({
+      render: function () {
+        var settings = {
+          dots: true,
+          infinite: false,
+          speed: 500,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          lazyLoad: false,
+          draggable: false,
+          initialSlide: currentIndex,
+          accessibility: true,
+          afterChange: (newSlideIndex) => {
+            window.location.hash = `/projects/${projects[newSlideIndex].url}`;
+          }
+        };
+
+        return (
+          <Slider {...settings}>
+            {projectsJSX}
+          </Slider>
+        );
+      }
+    });
+  return <SimpleSlider />;
   }
+
+
 }
 
 Project.propTypes = {

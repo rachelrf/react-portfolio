@@ -18,7 +18,6 @@ $gray-header: #7F7F7F;
 body {
   background-color: $main-bg-color;
   color: $accent-black;
-  display: flex;
   justify-content: center;
   font-family: 'Raleway', sans-serif;
   margin-top: 65px;
@@ -26,11 +25,23 @@ body {
 
 .main-app-container {
   padding-top: 2em;
+  width: 80vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .main-app-nav {
   font-size: 2em;
   text-align: left;
+}
+
+.summary {
+  padding: 2vh;
+  height: 70vh;
+  width: 80vw;
+  background-color: $accent-blue;
 }
 
 .project-list {
@@ -62,7 +73,7 @@ body {
 .screenshot-container {
   background-color: $accent-red;
   margin-right: 6vw;
-  height: 42vh;
+  height: 38vh;
   width: 38vw;
   background-size: cover;
 }
@@ -70,7 +81,7 @@ body {
 .iphone {
   background: $color-snow;
   border: solid 2px $color-silver;
-  height: 48vh;
+  height: 46vh;
   width: 25vh;
   border-radius: 24px;
   margin: 0 auto;
@@ -85,7 +96,7 @@ body {
 .iphone-inner {
   background: $color-snow;
   border: solid 2px $color-silver-dark;
-  height: 48vh;
+  height: 46vh;
   width: 24vh;
   border-radius: 24px;
   position: relative;
@@ -132,7 +143,7 @@ body {
 .screen {
   position: relative;
   width: 22vh;
-  height: 38vh;
+  height: 36vh;
   margin: 0 auto;
   top: 4vh;
   overflow: hidden;
@@ -143,6 +154,19 @@ body {
 .project-info {
   padding: 0 2vh 2vh 2vh;
   background-color: $color-snow;
+  text-align: left;
+}
+
+.project-title {
+
+}
+
+.project-date {
+
+}
+
+.project-info-text {
+  font-size: 80%;
 }
 
 .github-info {
@@ -156,6 +180,7 @@ footer {
   font-size: 0.75em;
   text-align: center;
   padding-top: 5vh;
+  bottom: 0px;
 
   a {
     text-decoration: none;
@@ -164,10 +189,6 @@ footer {
     &:hover {
       color: $accent-blue;
     }
-  }
-
-  #heart{
-    color: $accent-red;
   }
 }
 
@@ -186,19 +207,15 @@ footer {
   margin-top: -5px;
 }
 
-ul.nav{
-  display:inline-flex;
-}
-
-
-<<<<<<< 3ce02a9f9da501fe5369ce7b724da588ef0334a5
 .footer_icon {
   height: 18px;
   width: auto;
 }
 
-=======
->>>>>>> Footer text and styling
+ul.nav{
+  display:inline-flex;
+}
+
 .nav-link{
   border-top: 4px solid transparent;
   transition: border-top .3s;
@@ -223,55 +240,9 @@ ul.nav{
   background-color: transparent;
 }
 
-.example-enter {
-  opacity: 0.01;
-}
-
-.example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
-
-.example-leave {
-  opacity: 0;
-}
-
-.example-leave.example-leave-active {
-  opacity: 0;
-}
-
-.example-appear {
-  opacity: 0.01;
-}
-
-.example-appear.example-appear-active {
-  opacity: 1;
-  transition: opacity .5s ease-in;
-}
-
-
-.example-enter {
-  opacity: 0.01;
-}
-
-.example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
-
-.example-leave {
-  opacity: 0;
-}
-
-.example-leave.example-leave-active {
-  opacity: 0;
-}
-
-.example-appear {
-  opacity: 0.01;
-}
-
-.example-appear.example-appear-active {
-  opacity: 1;
-  transition: opacity .5s ease-in;
+.projects-page {
+  width: 80%;
+  background-color: #f00;
+  min-height: 0;           /* NEW */
+  min-width: 0;            /* NEW */
 }

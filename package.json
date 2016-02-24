@@ -5,7 +5,9 @@
   "scripts": {
     "clean": "rimraf dist",
     "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build:webpack2": "cross-env NODE_ENV=production webpack --config webpack.config.prod2.js",
     "build": "npm run clean && npm run build:webpack",
+    "build2": "npm run clean && npm run build:webpack2",
     "dev": "NODE_ENV=development npm start",
     "start": "node devServer.js",
     "lint": "eslint src"
@@ -18,6 +20,7 @@
   "homepage": "https://github.com/tsaiDavid/simple-redux-boilerplate",
   "devDependencies": {
     "autoprefixer": "^6.3.1",
+    "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.3.15",
     "babel-eslint": "^5.0.0-beta4",
     "babel-loader": "^6.2.0",
@@ -32,6 +35,8 @@
     "eslint-plugin-react": "^3.16.1",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.13.3",
+    "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^2.9.0",
     "node-sass": "^3.4.2",
     "redux-devtools": "^3.0.1",
     "redux-devtools-dock-monitor": "^1.0.1",
@@ -40,6 +45,7 @@
     "rimraf": "^2.4.3",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
     "webpack": "^1.12.12",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0"
@@ -52,6 +58,8 @@
     "react-redux": "^4.1.1",
     "react-router": "^2.0.0",
     "react-router-redux": "^4.0.0",
-    "redux-thunk": "^1.0.3"
+    "react-slick": "^0.10.0",
+    "redux-thunk": "^1.0.3",
+    "webpack-s3-plugin": "^0.6.7"
   }
 }

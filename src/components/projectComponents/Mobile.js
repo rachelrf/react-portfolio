@@ -6,7 +6,9 @@ export default class Mobile extends Component {
   }
 
   render() {
-    const mobileImage = "'" + this.props + "'";
+    const { image } = this.props;
+    console.log('IMAGE', image)
+
 
     return (
       <div className="mobile-container">
@@ -15,10 +17,9 @@ export default class Mobile extends Component {
             <div className="camera"></div>
             <div className="small-top-circ"></div>
             <div className="oval"></div>
-            <div className="screen">
+            <div className="screen" style={{ backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundImage: `url(${image})`}}>
               <div className="usman">
               </div>
-              <img src={mobileImage}/>
             </div>
             <div className="circ-button"></div>
           </div>
@@ -29,5 +30,5 @@ export default class Mobile extends Component {
 }
 
 Mobile.propTypes = {
-  mobile_image: PropTypes.string.isRequired
+  image: PropTypes.string.isRequired
 };

@@ -20,18 +20,16 @@ export default class Home extends Component {
           <div className="project-link-image" style={{backgroundImage: `url(${project.desktop_image})`}}>
           </div>
           {project.title}
-
         </Link>
       </li> );
-
     });
 
 
     // we can use ES6's object destructuring to effectively 'unpack' our props
     return (
-        <div>
-          <h1>Hello I am John</h1>
-          <p>Here is some info about me</p>
+        <div className="summary">
+          <h1>Hi, I'm Rachel</h1>
+          <p>I’m a software engineer. Originally from Anchorage, Alaska, but now living in San Francisco. I graduated in 2013 from Stanford University with a B.S. in Bioengineering. I’ve worked on projects ranging from programming RNA to programming dating apps, and from making spider silk to web development (heh). I love harnessing technologies to make new and exciting things.</p>
           <div>
             <div className="main-app-nav">Selected Projects</div>
             <ul className="project-list">

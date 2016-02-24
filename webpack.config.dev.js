@@ -46,7 +46,8 @@ module.exports = {
       {
         test: /(\.scss$|\.css$)/,
         loader: 'style!css!sass?includePaths[]=' + bourbon
-      }
+      },
+      { test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000' }
     ]
   }
 };
