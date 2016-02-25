@@ -301,10 +301,16 @@ body {
 }
 
 .github-info {
-  margin: 5vh;
+  margin-bottom: 5vh;
+  margin-left: 5vw;
   position: absolute;
   bottom: 0px;
   left: 0px;
+
+  @media screen and (max-width: 850px) {
+    font-size: 1.5vw;
+    margin: 3px;
+  }
 }
 
 footer {
