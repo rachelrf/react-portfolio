@@ -7,6 +7,7 @@ require('react-redux');
 require('react-router');
 require('react-router-redux');
 require('react-slick');
+require('react-html5video');
 //require('platform');
 require('lodash');
 //require('when');

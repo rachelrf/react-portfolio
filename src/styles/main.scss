@@ -38,6 +38,7 @@ body {
 }
 
 .title {
+
   @media screen and (max-width: 850px) {
     font-size: 1.5vw;
   }
@@ -47,13 +48,18 @@ body {
   }
 }
 
+.shaded {
+  box-shadow: 0 1px 4px rgba(0,0,0,.3),inset 0 0 40px rgba(0,0,0,.1);
+}
+
 .summary {
   padding: 2.5vw;
   height: 70vh;
   width: 80vw;
-  position: fixed;
-  top: 15vh;
+  position: relative;
+  top: -3vh;
   text-align: left;
+  opacity: 1;
 
   @media screen and (max-width:600px) {
     font-size: 2.5vw;
@@ -63,6 +69,27 @@ body {
     font-size: 3vw;
     margin-top: 0vh;
   }
+
+}
+
+.summary-wash {
+  background-color: $main-bg-color;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.5;
+}
+
+.summary .profile-pic {
+  width: 12vw;
+  display: inline-block;
+  position: relative;
+  float: left;
+  margin: 2vw;
+  margin-left: 0vw;
+  margin-bottom: 1vw;
 }
 
 .summary-text {
@@ -78,43 +105,50 @@ body {
 .summary-personal-background {
   height: 66vh;
   width: 80vw;
-  position: fixed;
-  top: 18vh;
+  position: relative;
+  top: 5vh;
 
   background: $color-snow;   
-  background: -webkit-linear-gradient(left top, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0)); 
-  background: -o-linear-gradient(bottom right, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0)); 
-  background: -moz-linear-gradient(bottom right, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0)); 
-  background: linear-gradient(to bottom right, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0)); 
+  background: -webkit-linear-gradient(left top, rgba(255, 255, 255, .8), rgba(255, 255, 255, 0)); 
+  background: -o-linear-gradient(bottom right, rgba(255, 255, 255, .8), rgba(255, 255, 255, 0)); 
+  background: -moz-linear-gradient(bottom right, rgba(255, 255, 255, .8), rgba(255, 255, 255, 0)); 
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, .8), rgba(255, 255, 255, 0)); 
 
 }
 
 .summary-background {
+  min-height: 540px;
   height: 75vh;
   width: 80vw;
-  background-image: url("http://i.imgur.com/5idscwd.jpg");
+  background-image: url('../assets/img/alaska.png');
   background-size: cover;
-  opacity: 0.4;
-
   @media screen and (max-device-width:550px) {
     margin-top: 5vh;
   }
 }
 
-.shaded {
-  box-shadow: 0 1px 4px rgba(0,0,0,.3),inset 0 0 40px rgba(0,0,0,.1);
-}
+
 
 .projects-container {
   position: absolute;
   padding: 2vw;
-  bottom: -3vh;
+  bottom: -1vh;
   left: 0px;
   right: 0px;
 
-  @media screen and (max-device-width:550px) {
-    bottom: 3vh;
+  a {
+    color: #000;
   }
+
+  @media screen and (max-device-width:550px) {
+    bottom: 0vh;
+    padding-bottom: 6vh;
+  }
+
+  @media screen and (max-device-width:496px) {
+    bottom: -2vh;
+  }
+
 }
 
 .project-list {
@@ -143,6 +177,12 @@ body {
     width: 20vw;
     height: 20vw;
   }
+
+  @media screen and (max-device-width:496px) {
+    width: 12vw;
+    height: 12vw;
+  }
+
 }
 
 .project-container {
@@ -167,7 +207,6 @@ body {
 }
 
 .screenshot-container {
-  margin-right: 6vw;
   height: 38vh;
   width: 38vw;
   background-size: cover;

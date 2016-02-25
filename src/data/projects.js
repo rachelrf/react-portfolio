@@ -26,7 +26,8 @@ const projectsData = {
             },
             {
                 url: 'Whereabouts',
-                desktop_image: 'http://ochumanesociety.com/clients/3697/images/kittens.jpg',
+                desktop_image: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTZusEozXWq1SC0B-ATYur2krn4OhRn2M64GV8Y_cSHhNNYL3nmr52ZyV8',
+                desktop_movie: 'https://fat.gfycat.com/UnawareFalseFrigatebird.mp4',
                 mobile_image: 'http://images.rachelrosefigura.com/portfolio/whereaboutsMobile.jpg',
                 title: 'Whereabouts',
                 date: '2016',

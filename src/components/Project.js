@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import Slider from 'react-slick';
 import { hashHistory } from 'react-router';
+import Video from 'react-html5video';
 
 export default class Project extends Component {
   constructor(props, context) {
@@ -20,13 +21,30 @@ export default class Project extends Component {
         currentIndex = index;
       }
 
+
+      let imageJSX = [<div className="screenshot-container" style={{backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundImage: `url(${project.desktop_image})`}}></div>];
+
+      if (project.desktop_movie) {
+        // imageJSX = [
+        //   <div class="gfyitem" data-title="false" data-autoplay="true" data-controls="false" data-expand="false" data-id="RemarkableGlamorousFantail"></div>
+        // ]
+        imageJSX = (
+          <Video width="400" autoPlay loop muted
+              onCanPlayThrough={() => {
+                  
+              }}>
+              <source src={`${project.desktop_movie.replace('mp4', 'webm')}`} type="video/webm" />
+              <source src={`${project.desktop_movie}`} type="video/mp4" />
+          </Video>
+        );
+      } 
+
       return (
         <div key={index} className="projectWrapper">
           <div className="project-container shaded">
 
             <div className="image-container" >
-              <div className="screenshot-container" style={{backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundImage: `url(${project.desktop_image})`}}>
-              </div>
+              {imageJSX}
 
               <Mobile image={project.mobile_image}/>
 
@@ -34,7 +52,7 @@ export default class Project extends Component {
 
             <div className="project-info">
               
-              <div><a href={project.project_url}><h2 className="project-title">{project.title}</h2></a></div>
+              <div><a href={project.project_url}><h2 className="project-title">{project.title} <sup><span style={{"fontSize": "18px"}} className="glyphicon glyphicon-link" aria-hidden="true"></span></sup></h2></a></div>
       
               <h4>Background</h4>
               <div className="project-info-text">{project.background}</div>

@@ -27,19 +27,30 @@ export default class Home extends Component {
 
     // we can use ES6's object destructuring to effectively 'unpack' our props
     return (
-        <div >
-          <div className="summary-background shaded"></div>
-          <div className="summary-personal-background"></div>
-          <div className="summary">
-            <h1 className="title">Hi, I'm Rachel</h1>
-            <div className="summary-text"><p>I’m a software engineer. Originally from Anchorage, Alaska, but now living in San Francisco. I graduated in 2013 from Stanford University with a B.S. in Bioengineering. I’ve worked on projects ranging from programming RNA to programming dating apps, and from making spider silk to web development (heh). I love harnessing technologies to make new and exciting things.</p></div>
-            <div className="projects-container">
-              <div className="main-app-nav title">Selected Projects</div>
-              <ul className="project-list">
-                {projectLinks}
-              </ul>
+        <div>
+          <div className="summary-background shaded">
+
+            <div className="summary-personal-background">
+
+              <div className="summary">
+                <img className="profile-pic" src="https://avatars2.githubusercontent.com/u/11700818?v=3&s=256" />
+                <h1 className="title">Hi, I'm Rachel</h1>
+                <div className="summary-text"><p>I’m a software engineer. Originally from Anchorage, Alaska, but now living in San Francisco. I graduated in 2013 from Stanford University with a B.S. in Bioengineering. Since then I’ve worked on projects ranging from programming RNA to programming dating apps, and from making spider silk to web development (heh). I love harnessing technologies to make new and exciting things.</p></div>
+                <div className="projects-container">
+                  <div className="main-app-nav title">Selected Projects</div>
+                  <ul className="project-list">
+                    {projectLinks}
+                  </ul>
+                </div>
+              </div>
+
             </div>
+
+
+
           </div>
+          
+
         </div>
     );
   }
