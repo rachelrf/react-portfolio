@@ -1,81 +1,87 @@
-const path = require('path');
-const webpack = require('webpack');
-const bourbon = require('node-bourbon').includePaths;
-const S3Plugin = require('webpack-s3-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const s3config = require('./s3config.json');
+var webpack               = require('webpack');
+var WebpackNotifierPlugin = require('webpack-notifier');
+var ExtractTextPlugin     = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin     = require('html-webpack-plugin');
+var path                  = require("path");
+const bourbon             = require('node-bourbon').includePaths;
 
-module.exports = {
-  devtool: 'source-map',
-  entry: [
-    './src/index'
-  ],
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+
+var publicPath = '/';
+var devServer;
+if (process.env.WEBPACK_DEV_SERVER) {
+  publicPath = '';
+  devServer = {
+    proxy: {
+      "/api/*": "http://teach.classdojo.dev:8000",
+      "/locales/*": "http://teach.classdojo.dev:8000"
+    },
+    contentBase: "./build/prod_build"
+  };
+}
+
+var webpackConfig = {
+  entry: {
+    app: [
+      './src/index.js'
+    ]//,
+    //vendor: './src/vendors/index.js'
   },
-  plugins: [
-    /**
-     * This plugin assigns the module and chunk ids by occurence count. What this
-     * means is that frequently used IDs will get lower/shorter IDs - so they become
-     * more predictable.
-     */
-    new webpack.optimize.OccurenceOrderPlugin(),
-    /**
-     * See description in 'webpack.config.dev' for more info.
-     */
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
-    /**
-     * Some of you might recognize this! It minimizes all your JS output of chunks.
-     * Loaders are switched into a minmizing mode. Obviously, you'd only want to run
-     * your production code through this!
-     */
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compressor: {
-    //     warnings: false
-    //   }
-    // }),
-
-    // new HtmlWebpackPlugin({
-    //   template: './default_index.ejs',
-    //   inject: 'body'
-    // }),
-
-    new S3Plugin({
-      // Exclude uploading of html 
-      exclude: /.*\.htmlNOT$/,
-      // s3Options are required 
-      s3Options: {
-        accessKeyId: s3config.access,
-        secretAccessKey: s3config.secret,
-        region: 'us-west-2'
-      },
-      s3UploadOptions: {
-        Bucket: 'static.rachelrosefigura.com',
-        ACL: 'public-read'
-      },
-      cdnizerOptions: {
-        defaultCDNBase: 'http://static.rachelrosefigura.com'
-      }
-    })
-
-  ],
+  output: {
+    path: './build/prod_build',
+    filename: 'app.bundle-[hash].js',
+    publicPath: publicPath
+  },
+  devServer: devServer,
   module: {
     loaders: [
-      {
-        test: /\.js$/,
-        loaders: ['babel'],
-        include: path.join(__dirname, 'src')
-      },
+      // IMPORTANT: we don't want to process EVERY single JS file with babel
+      // loader. We only want to process the files inside our app structure
+      // otherwise this could get very slow or even fail.
+      {test: /\.jsx?$/, include: [/\/src\//], exclude: [/\/node_modules\//, /\/styles\//], loader: 'babel'},
+      {test: /\.json$/, loader: 'json-loader'},
+      {test: /\.css$/,  loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
       {
         test: /(\.scss$|\.css$)/,
         loader: 'style!css!sass?includePaths[]=' + bourbon
       },
-      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
+      {test: /\.png/,   loader: 'file-loader?mimetype=image/png'},
+      {test: /\.jpg/,   loader: 'file'},
+      {test: /\.gif/,   loader: 'file'},
+      {test: /\.mp3/,   loader: 'file'},
+      {test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,         loader: "file-loader?mimetype=application/font-woff"},
+      {test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,  loader: "file-loader"}
     ]
-  }
+  },
+  resolve: {
+    // Needed so you can require('a') instead of require('a.jsx')
+    extensions: ['', '.js', '.jsx', '.json', '.styl'],
+
+    // Lets make sure only ONE version of react gets bundled and used/
+    // If any dependency has an internal version of react in its node modules
+    // is gonna be ignored and this one will be used (unless that dependency
+    // is being used through a bundle and not consumed through common js)
+    alias: {
+      react: path.join(__dirname, 'node_modules/react')
+    }
+
+  },
+  plugins: [
+    new ExtractTextPlugin("app.bundle-[hash].css", {allChunks: true}),
+    new WebpackNotifierPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.bundle-[hash].js', minChunks: Infinity}),
+    new HtmlWebpackPlugin({
+      template: './src/assets/index.template.html'
+    }),
+    new webpack.DefinePlugin({
+      __ENV__: {},
+      "process.env": {
+        NODE_ENV: JSON.stringify("production")
+      }
+    })
+  ]
 };
+
+
+module.exports = webpackConfig;
