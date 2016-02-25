@@ -2,7 +2,7 @@ const projectsData = {
   data: [
             {
                 url: 'MatchMe',
-                desktop_image: 'http://images.rachelrosefigura.com/portfolio/MatchMeDesktop.png',
+                desktop_image: require('../assets/img/MatchMeDesktop.png'),
                 mobile_image: 'http://images.rachelrosefigura.com/portfolio/MatchMeMobileCropped.jpg',
                 title: 'MatchMe',
                 date: '2016',

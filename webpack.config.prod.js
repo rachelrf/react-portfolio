@@ -5,7 +5,9 @@ var ExtractTextPlugin     = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin     = require('html-webpack-plugin');
 var path                  = require("path");
 const bourbon             = require('node-bourbon').includePaths;
+const S3Plugin            = require('webpack-s3-plugin');
 
+const s3config            = require('./s3config.json');
 
 var publicPath = '/';
 var devServer;
@@ -24,8 +26,8 @@ var webpackConfig = {
   entry: {
     app: [
       './src/index.js'
-    ]//,
-    //vendor: './src/vendors/index.js'
+    ],
+    vendor: './src/vendors/index.js'
   },
   output: {
     path: './build/prod_build',
@@ -78,6 +80,23 @@ var webpackConfig = {
       __ENV__: {},
       "process.env": {
         NODE_ENV: JSON.stringify("production")
+      }
+    }),
+    new S3Plugin({
+      
+      directory: "./build/prod_build",
+      // s3Options are required 
+      s3Options: {
+        accessKeyId: s3config.access,
+        secretAccessKey: s3config.secret,
+        region: 'us-west-2'
+      },
+      s3UploadOptions: {
+        Bucket: 'www.rachelrosefigura.com',
+        ACL: 'public-read'
+      },
+      cdnizerOptions: {
+        defaultCDNBase: 'http://static.rachelrosefigura.com'
       }
     })
   ]

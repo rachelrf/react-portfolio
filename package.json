@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "My simple redux application.",
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf dist build",
     "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js -p --progress --bail",
     "build": "npm run clean && npm run build:webpack",
-    "build2": "npm run clean && npm run build:webpack2",
+    "deploy": "cross-env NODE_ENV=production webpack --config webpack.config.deploy.js --progress --bail",
     "dev": "NODE_ENV=development npm start",
     "start": "WEBPACK_TEST_BROWSER=true node ./node_modules/webpack-dev-server/bin/webpack-dev-server --port 3000 --host 0.0.0.0 --config webpack.config.dev.js --hot --progress --inline",
     "lint": "eslint src"
@@ -36,7 +36,7 @@
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.13.3",
     "file-loader": "^0.8.5",
-    "html-webpack-plugin": "^2.9.0",
+    "html-webpack-plugin": "1.4.0",
     "node-sass": "^3.4.2",
     "redux-devtools": "^3.0.1",
     "redux-devtools-dock-monitor": "^1.0.1",

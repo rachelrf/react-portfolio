@@ -5,3 +5,4 @@ lib
 coverage
 dist
 s3config.json
+build
