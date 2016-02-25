@@ -9,7 +9,7 @@ const S3Plugin            = require('webpack-s3-plugin');
 
 const s3config            = require('./s3config.json');
 
-var publicPath = '/';
+var publicPath = 'http://static.rachelrosefigura.com/';
 var devServer;
 if (process.env.WEBPACK_DEV_SERVER) {
   publicPath = '';
