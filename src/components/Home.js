@@ -27,14 +27,18 @@ export default class Home extends Component {
 
     // we can use ES6's object destructuring to effectively 'unpack' our props
     return (
-        <div className="summary">
-          <h1>Hi, I'm Rachel</h1>
-          <p>I’m a software engineer. Originally from Anchorage, Alaska, but now living in San Francisco. I graduated in 2013 from Stanford University with a B.S. in Bioengineering. I’ve worked on projects ranging from programming RNA to programming dating apps, and from making spider silk to web development (heh). I love harnessing technologies to make new and exciting things.</p>
-          <div>
-            <div className="main-app-nav">Selected Projects</div>
-            <ul className="project-list">
-              {projectLinks}
-            </ul>
+        <div >
+          <div className="summary-background shaded"></div>
+          <div className="summary-personal-background"></div>
+          <div className="summary">
+            <h1>Hi, I'm Rachel</h1>
+            <div className="summary-text"><p>I’m a software engineer. Originally from Anchorage, Alaska, but now living in San Francisco. I graduated in 2013 from Stanford University with a B.S. in Bioengineering. I’ve worked on projects ranging from programming RNA to programming dating apps, and from making spider silk to web development (heh). I love harnessing technologies to make new and exciting things.</p></div>
+            <div className="projects-container">
+              <div className="main-app-nav">Selected Projects</div>
+              <ul className="project-list">
+                {projectLinks}
+              </ul>
+            </div>
           </div>
         </div>
     );

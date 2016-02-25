@@ -22,7 +22,7 @@ export default class Project extends Component {
 
       return (
         <div key={index} className="projectWrapper">
-          <div className="project-container">
+          <div className="project-container shaded">
 
             <div className="image-container" >
               <div className="screenshot-container" style={{backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundImage: `url(${project.desktop_image})`}}>

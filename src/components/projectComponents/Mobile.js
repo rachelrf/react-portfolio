@@ -7,8 +7,6 @@ export default class Mobile extends Component {
 
   render() {
     const { image } = this.props;
-    console.log('IMAGE', image)
-
 
     return (
       <div className="mobile-container">

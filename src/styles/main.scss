@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:100,400);
 
-$main-bg-color: #f1f2f0;
+$main-bg-color: #f1f2f2;
 $accent-blue: #37bbe4;
-$accent-gray: #e1e0dd;
+$accent-gray: #dbdbdb;
 $accent-black: #35342f;
 $accent-orange: #ec6b2d;
 $accent-red: #dd6464;
@@ -10,7 +10,7 @@ $accent-red: #dd6464;
 @import "bourbon";
 $color-snow: #fff;
 $color-silver: #c5c5c5;
-$color-silver-dark: #b4b4b4;
+$color-silver-dark: #ece9df;
 
 $gray-header: #7F7F7F;
 
@@ -38,10 +38,62 @@ body {
 }
 
 .summary {
-  padding: 2vh;
+  padding: 3vh;
   height: 70vh;
   width: 80vw;
-  background-color: $accent-blue;
+  position: fixed;
+  top: 15vh;
+  text-align: left;
+
+  @media screen and (max-width: 550px) {
+    background-color: yellow;
+  }
+}
+
+.summary-text {
+  font-size: 105%;
+  padding-left: 1vw;
+  width: 38vw;
+
+  @media (max-width: 995px) {
+    width: auto;
+    height: 40vh;
+  }
+}
+
+.summary-personal-background {
+  height: 66vh;
+  width: 80vw;
+  position: fixed;
+  top: 18vh;
+
+  background: $color-snow;   
+  background: -webkit-linear-gradient(left top, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0)); 
+  background: -o-linear-gradient(bottom right, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0)); 
+  background: -moz-linear-gradient(bottom right, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0)); 
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0)); 
+
+}
+
+.summary-background {
+  padding: 2vh;
+  height: 75vh;
+  width: 80vw;
+  background-image: url("http://i.imgur.com/5idscwd.jpg");
+  background-size: cover;
+  opacity: 0.4;
+}
+
+.shaded {
+  box-shadow: 0 1px 4px rgba(0,0,0,.3),inset 0 0 40px rgba(0,0,0,.1);
+}
+
+.projects-container {
+  position: absolute;
+  padding: 2vw;
+  bottom: -3vh;
+  left: 0px;
+  right: 0px;
 }
 
 .project-list {
@@ -55,9 +107,10 @@ body {
 }
 
 .project-link-image {
-  width: 8vw;
-  height: 8vw;
+  width: 11vw;
+  height: 11vw;
   background-size: cover;
+  background-position: center;
   border-radius: 3px;
 }
 
@@ -68,10 +121,17 @@ body {
   height: 70vh;
   width: 80vw;
   padding: 5vh 5vw 5vh 5vw;
+
+  @media (max-width: 1250px) {
+    background-color: red;
+  }
+
+  @media (max-width: 800px) {
+    background-color: yellow;
+  }
 }
 
 .screenshot-container {
-  background-color: $accent-red;
   margin-right: 6vw;
   height: 38vh;
   width: 38vw;
@@ -153,16 +213,8 @@ body {
 
 .project-info {
   padding: 0 2vh 2vh 2vh;
-  background-color: $color-snow;
+  background-color: rgba(255,255,255, .7);
   text-align: left;
-}
-
-.project-title {
-
-}
-
-.project-date {
-
 }
 
 .project-info-text {
@@ -193,7 +245,7 @@ footer {
 }
 
 .header {
-  background-color: rgba(255,255,255, .55);
+  background-color: rgba(250,255,255, .75);
   /* remove the gradient */
   background-image: none !important;
   box-shadow: 0 8px 6px -6px rgba(0,0,0, .2);
