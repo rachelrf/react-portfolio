@@ -9,7 +9,7 @@ export default class Mobile extends Component {
     const { image } = this.props;
 
     return (
-      <div className="mobile-container">
+      <div className="mobile-container hide-when-medium">
         <div className="iphone">
           <div className="iphone-inner">
             <div className="camera"></div>

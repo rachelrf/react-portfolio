@@ -37,22 +37,36 @@ body {
   text-align: left;
 }
 
+.title {
+  @media screen and (max-width: 850px) {
+    font-size: 1.5vw;
+  }
+
+  @media screen and (max-device-width:550px) {
+    font-size: 3vh;
+  }
+}
+
 .summary {
-  padding: 3vh;
+  padding: 2.5vw;
   height: 70vh;
   width: 80vw;
   position: fixed;
   top: 15vh;
   text-align: left;
 
-  @media screen and (max-width: 550px) {
-    background-color: yellow;
+  @media screen and (max-width:600px) {
+    font-size: 2.5vw;
+  }
+
+  @media screen and (max-device-width:550px) {
+    font-size: 3vw;
+    margin-top: 0vh;
   }
 }
 
 .summary-text {
   font-size: 105%;
-  padding-left: 1vw;
   width: 38vw;
 
   @media (max-width: 995px) {
@@ -76,12 +90,15 @@ body {
 }
 
 .summary-background {
-  padding: 2vh;
   height: 75vh;
   width: 80vw;
   background-image: url("http://i.imgur.com/5idscwd.jpg");
   background-size: cover;
   opacity: 0.4;
+
+  @media screen and (max-device-width:550px) {
+    margin-top: 5vh;
+  }
 }
 
 .shaded {
@@ -94,6 +111,10 @@ body {
   bottom: -3vh;
   left: 0px;
   right: 0px;
+
+  @media screen and (max-device-width:550px) {
+    bottom: 3vh;
+  }
 }
 
 .project-list {
@@ -112,6 +133,16 @@ body {
   background-size: cover;
   background-position: center;
   border-radius: 3px;
+
+  @media screen and (max-width: 1200px) {
+    width: 10vw;
+    height: 10vw;
+  }
+
+  @media screen and (max-device-width:550px) {
+    width: 20vw;
+    height: 20vw;
+  }
 }
 
 .project-container {
@@ -122,12 +153,16 @@ body {
   width: 80vw;
   padding: 5vh 5vw 5vh 5vw;
 
-  @media (max-width: 1250px) {
-    background-color: red;
+  @media screen and (max-width: 850px) {
+    display: block;
+    height: 75vh;
+    padding: 3vh 5vw 3vh 5vw;
   }
 
-  @media (max-width: 800px) {
-    background-color: yellow;
+  @media screen and (max-device-width:550px) {
+    display: block;
+    margin-top: 5vh;
+    height: 75vh;
   }
 }
 
@@ -136,6 +171,23 @@ body {
   height: 38vh;
   width: 38vw;
   background-size: cover;
+
+  @media screen and (max-width: 1200px) {
+    margin-right: 2vw;
+  }
+
+  @media screen and (max-width: 850px) {
+    margin-right: 0;
+    width: 72vw;
+    height: 25vh;
+    margin-bottom: 2vw;
+  }
+
+  @media screen and (max-device-width:550px) {
+    width: 70vw;
+    height: 25vh;
+    margin-bottom: 2vw;
+  }
 }
 
 .iphone {
@@ -211,14 +263,41 @@ body {
   border: solid 2px #3b3b3b;@include transition(all .4s $ease-in-circ);
 }
 
+.project-title {
+  @media screen and (max-width: 850px) {
+    font-size: 3vw;
+    margin-top: .5vw;
+  }
+}
+
 .project-info {
   padding: 0 2vh 2vh 2vh;
   background-color: rgba(255,255,255, .7);
   text-align: left;
+
+  @media screen and (max-width: 850px) {
+    width: 72vw;
+    padding: 1vw 0vw 1vw 1vw;
+  }
+
+  @media screen and (max-device-width:550px) {
+    width: 70vw;
+    padding: 2vw 2vw 3vw 2vw;
+    font-size: 2vw;
+  }
 }
 
 .project-info-text {
   font-size: 80%;
+
+  @media screen and (max-width: 850px) {
+    font-size: 1.5vw;
+  }
+
+  @media screen and (max-device-width:550px) {
+    font-size: 2.2vw;
+  }
+
 }
 
 .github-info {
@@ -242,6 +321,10 @@ footer {
       color: $accent-blue;
     }
   }
+
+  @media screen and (max-device-width:550px) {
+    font-size: 1.5vh;
+  }
 }
 
 .header {
@@ -262,16 +345,42 @@ footer {
 .footer_icon {
   height: 18px;
   width: auto;
+
+  @media screen and (max-device-width:550px) {
+    height: 2vh;
+    width: auto;
+  }
 }
+
+.navbar {
+  @media screen and (max-device-width:550px) {
+    height: 6vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+  }
+}
+.nav-text-name {
+  @media screen and (max-device-width:550px) {
+    font-size: 3.5vw;
+  }
+}
+
+.nav-text {
+  @media screen and (max-device-width:550px) {
+    font-size: 2.5vw;
+  }
+}
+
 
 ul.nav{
   display:inline-flex;
 }
 
 .nav-link{
+
   border-top: 4px solid transparent;
   transition: border-top .3s;
-  &:hover{border-top: 4px solid dodgerblue;}
+  &:hover{border-top: 4px solid dodgerblue;};
 }
 
 .hide-when-small {
@@ -280,9 +389,17 @@ ul.nav{
   }
 }
 
+.hide-when-medium {
+  @media screen and (max-width: 1150px) {
+    display: none;
+  }
+}
+
 .icon {
   font-size: 1.4em;
-
+  @media screen and (max-device-width:550px) {
+    font-size: 2.5vw;
+  }
 }
 
 .nav > li > a:focus,
@@ -290,6 +407,7 @@ ul.nav{
 {
   text-decoration: none;
   background-color: transparent;
+
 }
 
 .projects-page {

@@ -7,18 +7,18 @@ export default class Header extends Component {
           <nav className="navbar navbar-fixed-top navbar-inner header">
 
             <div className="container">
-              <div className="navbar-brand pull-left">
+              <div className="navbar-brand pull-left nav-text-name">
                 <Link to="/">Rachel RoseFigura</Link>
               </div>
               <ul className="nav navbar-nav pull-right">
                 <li>
                   <a href="https://www.dropbox.com/home?preview=Rachel_RoseFigura.pdf" className="nav-link">
-                    <span className="hide-when-small">Resume</span>
+                    <span className="hide-when-small nav-text">Resume</span>
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="nav-link">
-                    <span className="hide-when-small">Contact</span>
+                  <a href="#" className="nav-link nav-text">
+                    <span className="hide-when-small  nav-text">Contact</span>
                   </a>
                 </li>
                 <li>

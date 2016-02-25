@@ -34,7 +34,7 @@ export default class Project extends Component {
 
             <div className="project-info">
               
-               <div className="project-title"><a href={project.project_url}><h2>{project.title}</h2></a></div>
+              <div><a href={project.project_url}><h2 className="project-title">{project.title}</h2></a></div>
       
               <h4>Background</h4>
               <div className="project-info-text">{project.background}</div>
@@ -46,7 +46,7 @@ export default class Project extends Component {
             </div>
 
             <div className="github-info">
-              <div> <img src="../data/logos/github-logo.png"/> {project.github_url} </div>
+              <div><a className="github-url" href={`${project.github_url}`}> <i className="fa fa-github icon"></i> {project.github_url}</a> </div>
             </div>
 
           </div>
