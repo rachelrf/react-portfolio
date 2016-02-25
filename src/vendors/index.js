@@ -1,5 +1,6 @@
 
 require('react');
+require('react-dom');
 require('redux');
 require('redux-thunk');
 require('react-redux');
