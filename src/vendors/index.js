@@ -1,7 +1,11 @@
 
-
 require('react');
+require('redux');
+require('redux-thunk');
+require('react-redux');
 require('react-router');
+require('react-router-redux');
+require('react-slick');
 //require('platform');
 require('lodash');
 //require('when');

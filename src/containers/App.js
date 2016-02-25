@@ -5,7 +5,6 @@ import * as CounterActions from '../actions/CounterActions';
 import Project from '../components/Project';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 /**
  * It is common practice to have a 'Root' container/component require our main App (this one).
@@ -32,17 +31,3 @@ export default class App extends Component {
     );
   }
 }
-
-/*
-        <ReactCSSTransitionGroup
-          component="div"
-          transitionName="example"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={500}
-          transitionAppear={true}
-        >
-          {React.cloneElement(this.props.children, {
-            key: this.props.location.pathname
-          })}
-        </ReactCSSTransitionGroup>
-*/
